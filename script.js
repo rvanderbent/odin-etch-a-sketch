@@ -25,6 +25,7 @@ function drawGrid(squares) {
 			row.appendChild(cell);
 		};
 	};
+    activateCells();
     return;
 };
 
@@ -35,15 +36,15 @@ function removeGrid(){
     })
 };
 
-drawGrid(16);
-
-let cells = document.querySelectorAll(".cell");
-
-cells.forEach(cell =>
-	cell.addEventListener('mouseover', (e) => {
-		e.target.classList.add("hovered");
-	})
-);
+function activateCells(){
+    let cells = document.querySelectorAll(".cell");
+    cells.forEach(cell =>
+        cell.addEventListener('mouseover', (e) => {
+            e.target.classList.add("hovered");
+        })
+    );
+    return;
+}
 
 
 let resetButton = document.querySelector("#reset")
@@ -52,3 +53,7 @@ resetButton.addEventListener('click', (e) => {
 	squares = prompt("Enter a number", "16");
     drawGrid(squares);
 });
+
+
+
+drawGrid(16);

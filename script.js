@@ -27,10 +27,12 @@ let cells = document.querySelectorAll(".cell");
 
 cells.forEach(cell =>
     cell.addEventListener('mouseover', (e) => {
-        e.target.style.backgroundColor = 'red';
+        e.target.classList.add("hovered");
     })
     );
 
 
-
-
+let resetButton = document.querySelector("#reset")
+resetButton.addEventListener('click', (e) => {
+    squares = prompt("Enter a number", "16");
+});

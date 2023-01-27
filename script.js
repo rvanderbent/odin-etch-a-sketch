@@ -1,38 +1,54 @@
-const gridContainer = document.querySelector("#grid-container");
+
+const gridContainer = document.querySelector("#grid-container")
 
 
-let squares = 16;
-let rows = 16;
+function drawGrid(squares) {
+    grid = document.createElement("div");
+    grid.classList.add("grid");
+    gridContainer.appendChild(grid);
 
-//Create n rows
-for (let n=0; n <= rows; n++){ 
-    const row = document.createElement("div");
-    row.classList.add("row");
+	//Create n rows
+	for (let n = 0; n <= squares; n++) {
+		const row = document.createElement("div");
+		row.classList.add("row");
 
-    gridContainer.appendChild(row); 
+		grid.appendChild(row);
 
-    //Add n cells to each row
-    for (let n = 0; n <= squares; n++){
-        const cell = document.createElement("div");
-        cell.style.width = '50px';
-        cell.style.height = '50px';
-        cell.style.borderStyle = 'solid';
-        cell.classList.add("cell");
-        
-        row.appendChild(cell); 
-    };
+		//Add n cells to each row
+		for (let n = 0; n <= squares; n++) {
+			const cell = document.createElement("div");
+			cell.style.width = '50px';
+			cell.style.height = '50px';
+			cell.style.borderStyle = 'solid';
+			cell.classList.add("cell");
+
+			row.appendChild(cell);
+		};
+	};
+    return;
 };
+
+function removeGrid(){
+    console.log(gridContainer)
+    Array.from(gridContainer.children).forEach(child => {
+        gridContainer.removeChild(child);
+    })
+};
+
+drawGrid(16);
 
 let cells = document.querySelectorAll(".cell");
 
 cells.forEach(cell =>
-    cell.addEventListener('mouseover', (e) => {
-        e.target.classList.add("hovered");
-    })
-    );
+	cell.addEventListener('mouseover', (e) => {
+		e.target.classList.add("hovered");
+	})
+);
 
 
 let resetButton = document.querySelector("#reset")
 resetButton.addEventListener('click', (e) => {
-    squares = prompt("Enter a number", "16");
+    removeGrid();
+	squares = prompt("Enter a number", "16");
+    drawGrid(squares);
 });

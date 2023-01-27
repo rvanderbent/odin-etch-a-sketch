@@ -1,0 +1,15 @@
+#grid-container {
+    border-style: solid;
+    border-color: red;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.row {
+    display: flex;
+}
+
+.cell {
+    background-color: white;
+}

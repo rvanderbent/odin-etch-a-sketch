@@ -5,8 +5,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 960px;
+    height: 960px;
 }
 
+#grid {
+    width: inherit;
+    height: inherit;
+}
 .row {
     display: flex;
 }

@@ -2,26 +2,33 @@
 const gridContainer = document.querySelector("#grid-container")
 
 
-function drawGrid(squares) {
+function drawGrid(gridSize) {
     grid = document.createElement("div");
     grid.classList.add("grid");
     gridContainer.appendChild(grid);
 
+    let gridWidth = parseInt(getComputedStyle(gridContainer).height);
+    let gridHeight = parseInt(getComputedStyle(gridContainer).width);
+    let celSize = gridWidth / gridSize;
+
+    console.log(celSize);
+
+
 	//Create n rows
-	for (let n = 0; n <= squares; n++) {
+	for (let y = 0; y < gridSize; y++) {
 		const row = document.createElement("div");
 		row.classList.add("row");
-
 		grid.appendChild(row);
 
 		//Add n cells to each row
-		for (let n = 0; n <= squares; n++) {
+		for (let x = 0; x < gridSize; x++) {
 			const cell = document.createElement("div");
-			cell.style.width = '50px';
-			cell.style.height = '50px';
+			cell.flex = '1';
 			cell.style.borderStyle = 'solid';
+            cell.style.borderWidth = '1px';
 			cell.classList.add("cell");
-
+            cell.style.width = celSize-2+'px';
+            cell.style.height = celSize-2+'px';
 			row.appendChild(cell);
 		};
 	};
